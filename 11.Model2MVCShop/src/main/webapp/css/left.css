@@ -17,8 +17,8 @@ a.menu		{ font-size: 9pt; font-family: 굴림체; color: #ff0000; text-decoration: 
 
 /* 링크 속성 */
 A.:link {  color: #333333 ; text-decoration: none; cursor:hand}
-A.:hover {  color: #347BD9 ;text-decoration: none; }
-A.:active {  color: #347BD9 ; text-decoration: none;}
+A.:hover {  color: #333333 ;text-decoration: none; }
+A.:active {  color: #333333 ; text-decoration: none;}
 A.:visited {  color: #333333 ; text-decoration: none;}
 A.: { onfocus : "this.blur();" }
 

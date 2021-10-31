@@ -10,7 +10,7 @@
 	
 	<div class="container">
 	       
-		<a class="navbar-brand" href="/index.jsp">Model2 MVC Shop</a>
+		<a class="navbar-brand" href="/index.jsp"><img src="/images/align.png" height="50"></a>
 		
 		<!-- toolBar Button Start //////////////////////// -->
 		<div class="navbar-header">
@@ -122,6 +122,24 @@
 	 	$( "a:contains('개인정보조회')" ).on("click" , function() {
 	 		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 			$(self.location).attr("href","/user/getUser?userId=${sessionScope.user.userId}");
+		});
+		
+	 	//=============  판매상품등록 Event  처리 =============	
+	 	$( "a:contains('판매상품등록')" ).on("click" , function() {
+	 		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+			$(self.location).attr("href","/product/addProduct");
+		});
+	 	
+	 	//=============  판매상품관리 Event  처리 =============	
+	 	$( "a:contains('판매상품관리')" ).on("click" , function() {
+	 		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+			$(self.location).attr("href","/product/listProduct?menu=manage");
+		});
+	 	
+	 	//=============  상 품 검 색 Event  처리 =============	
+	 	$( "a:contains('상 품 검 색')" ).on("click" , function() {
+	 		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+			$(self.location).attr("href","/product/listProduct?menu=search");
 		});
 		
 	</script>  

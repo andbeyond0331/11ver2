@@ -29,7 +29,50 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	
 	<!--  ///////////////////////// CSS ////////////////////////// -->
-	<style></style>
+	<style>
+	.navbar-custom {
+		background-color: black;
+	}
+	.navbar-custom .navbar-brand,
+	.navbar-custom .navbar-text{
+		color: white;
+	}
+	.panel-custom{
+		background-color: black;
+		color: lightgreen;
+	}
+	.list-group-item-custom{
+		color: lightgreen;
+	}
+	.btn-lg{
+		background-color: black;
+		color: lightgreen;
+	}
+	.btn-lg:hover{
+		color: #B97FF5;
+	}
+	.icon-bar{
+		background-color: limegreen;
+	}
+	
+	a{
+		color: limegreen;
+	}
+	
+	a:hover{
+		color: #B97FF5;
+		
+	}
+	
+	/* .navbar-custom .navbar-nav .nav-link {
+    color: white;
+	}
+	.navbar-custom .nav-item.active .nav-link,
+	.navbar-custom .nav-item:hover .nav-link {
+	    color: white;
+	} */
+	
+	</style>
    	
    	<!--  ///////////////////////// JavaScript ////////////////////////// -->
 	<script type="text/javascript">
@@ -50,6 +93,7 @@
 			});
 		});
 		
+		
 	</script>	
 	
 </head>
@@ -57,11 +101,11 @@
 <body>
 
 	<!-- ToolBar Start /////////////////////////////////////-->
-	<div class="navbar  navbar-default">
+	<div class="navbar  navbar-expand-sm navbar-custom">
 		
         <div class="container">
         
-        	<a class="navbar-brand" href="#">Model2 MVC Shop</a>
+        	<a class="navbar-brand" href="#" ><img src="/images/align.png" alt="Logo" height="45"></a>
 			
 			<!-- toolBar Button Start //////////////////////// -->
 			<div class="navbar-header">
@@ -76,7 +120,7 @@
 			
 			<div class="collapse navbar-collapse"  id="target">
 	             <ul class="nav navbar-nav navbar-right">
-	                 <li><a href="#">회원가입</a></li>
+	                 <li><a href="#" class="navbar-custom-collapse">회원가입</a></li>
 	                 <li><a href="#">로 그 인</a></li>
 	           	</ul>
 	       </div>
@@ -95,48 +139,48 @@
 			<div class="col-md-3">
 		        
 		       	<!--  회원관리 목록에 제목 -->
-				<div class="panel panel-primary">
+				<div class="panel panel-custom">
 					<div class="panel-heading">
-						<i class="glyphicon glyphicon-heart"></i> 회원관리
+						<i class="glyphicon glyphicon-ice-lolly"></i> 회원관리
          			</div>
          			<!--  회원관리 아이템 -->
 					<ul class="list-group">
-						 <li class="list-group-item">
-						 	<a href="#">개인정보조회</a> <i class="glyphicon glyphicon-ban-circle"></i>
+						 <li class="list-group-item list-group-item-custom">
+						 	<a href="#">개인정보조회</a>
 						 </li>
 						 <li class="list-group-item">
-						 	<a href="#">회원정보조회</a> <i class="glyphicon glyphicon-ban-circle"></i>
+						 	<a href="#">회원정보조회</a>
 						 </li>
 					</ul>
 		        </div>
                
                
-				<div class="panel panel-primary">
+				<div class="panel panel-custom">
 					<div class="panel-heading">
-							<i class="glyphicon glyphicon-briefcase"></i> 판매상품관리
+							<i class="glyphicon glyphicon-ice-lolly"></i> 판매상품관리
          			</div>
 					<ul class="list-group">
 						 <li class="list-group-item">
-						 	<a href="#">판매상품등록</a> <i class="glyphicon glyphicon-ban-circle"></i>
+						 	<a href="#">판매상품등록</a>
 						 </li>
 						 <li class="list-group-item">
-						 	<a href="#">판매상품관리</a> <i class="glyphicon glyphicon-ban-circle"></i>
+						 	<a href="#">판매상품관리</a> 
 						 </li>
 					</ul>
 		        </div>
                
                
-				<div class="panel panel-primary">
+				<div class="panel panel-custom">
 					<div class="panel-heading">
-							<i class="glyphicon glyphicon-shopping-cart"></i> 상품구매
+							<i class="glyphicon glyphicon-ice-lolly"></i> 상품구매
 	    			</div>
 					<ul class="list-group">
 						 <li class="list-group-item"><a href="#">상품검색</a></li>
 						  <li class="list-group-item">
-						  	<a href="#">구매이력조회</a> <i class="glyphicon glyphicon-ban-circle"></i>
+						  	<a href="#">구매이력조회</a> 
 						  </li>
 						 <li class="list-group-item">
-						 	<a href="#">최근본상품</a> <i class="glyphicon glyphicon-ban-circle"></i>
+						 	<a href="#">최근본상품</a>
 						 </li>
 					</ul>
 				</div>
@@ -145,22 +189,31 @@
 			<!--  Menu 구성 end /////////////////////////////////////-->   
 
 	 	 	<!--  Main start /////////////////////////////////////-->   		
-	 	 	<div class="col-md-9">
-				<div class="jumbotron">
-			  		<h1>Model2 MVC Shop</h1>
-			  		<p>로그인 후 사용가능...</p>
-			  		<p>로그인 전 검색만 가능합니다.</p>
-			  		<p>회원가입 하세요.</p>
-			  		
-			  		<div class="text-center">
-			  			<a class="btn btn-info btn-lg" href="#" role="button">회원가입</a>
-			  			<a class="btn btn-info btn-lg" href="#" role="button">로 그 인</a>
-			  		</div>
-			  	
-			  	</div>
-	        </div>
-	   	 	<!--  Main end /////////////////////////////////////-->   		
 	 	 	
+	   	 	<!--  Main end /////////////////////////////////////-->   		
+	 	 	<!--  myMain -->
+	 	 	<div class="row">
+			  <div class="col-xs-6 col-md-3">
+			    <a href="#" class="thumbnail">
+			      <img src="/images/align.png" alt="100%x180" style="height: 200px; width: 100%; display: block; data-holder-rendered="true">
+			    </a>
+			  </div>
+			  <div class="col-xs-6 col-md-3">
+			    <a href="#" class="thumbnail">
+			      <img src="/images/align.png" alt="100%x180" style="height: 200px; width: 100%; display: block; data-holder-rendered="true">
+			    </a>
+			  </div>
+			  <div class="col-xs-6 col-md-3">
+			    <a href="#" class="thumbnail">
+			      <img src="/images/align.png" alt="100%x180" style="height: 200px; width: 100%; display: block; data-holder-rendered="true">
+			    </a>
+			  </div>
+			  <div class="col-xs-6 col-md-3">
+			    <a href="#" class="thumbnail">
+			      <img src="/images/align.png" alt="100%x180" style="height: 200px; width: 100%; display: block; data-holder-rendered="true">
+			    </a>
+			  </div>
+			</div>
 		</div>
 		<!-- 다단레이아웃  end /////////////////////////////////////-->
 		
