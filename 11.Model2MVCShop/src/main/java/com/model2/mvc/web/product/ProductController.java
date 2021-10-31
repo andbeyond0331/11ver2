@@ -65,6 +65,7 @@ public class ProductController {
 		System.out.println("/product/addProduct : POST");
 		//Business Logic
 		product.setProTranCode("001");
+		
 		productService.addProduct(product);
 		
 		System.out.println("product : "+product);

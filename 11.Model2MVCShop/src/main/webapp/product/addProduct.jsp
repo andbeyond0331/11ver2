@@ -41,7 +41,8 @@
 		 $(function() {
 			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 			 $( "button" ).on("click" , function() {
-					self.location = "/product/updateProduct?prodNo=${product.prodNo}"
+				 var prodNo=$("input[name='prodNo']").val();
+					self.location = "/product/updateProduct?prodNo="+prodNo;
 				});
 		});
 		
@@ -57,6 +58,7 @@
 	
 	<!--  화면구성 div Start /////////////////////////////////////-->
 	<div class="container">
+		<input type="hidden" name="prodNo" value="${product.prodNo }">
 	
 		<div class="page-header">
 	       <h3 class=" text-info">상품 등록 확인</h3>
@@ -98,12 +100,7 @@
 		
 		<hr/>
 		
-		<div class="row">
-	  		<div class="col-md-12 text-center ">
-	  			<button type="button" class="btn btn-primary">상품정보수정</button>
-	  		</div>
-		</div>
-		
+
 		<br/>
 		
  	</div>

@@ -24,6 +24,20 @@
         	border: 3px solid #D6CDB7;
             margin-top: 10px;
         }
+        
+        .jumbotron{
+        	color:lightgreen;
+        	background-color:black;
+        }
+        
+        .btn-custom{
+        	color:lightgreen;
+        	background-color:black;
+        }
+        
+        .btn-custom:hover{
+        	color:#B97FF5;
+        }
     </style>
     
     <!--  ///////////////////////// JavaScript ////////////////////////// -->
@@ -73,7 +87,7 @@
 	<!-- ToolBar Start /////////////////////////////////////-->
 	<div class="navbar  navbar-default">
         <div class="container">
-        	<a class="navbar-brand" href="/index.jsp">Model2 MVC Shop</a>
+        	<a class="navbar-brand" href="/index.jsp">신난다</a>
    		</div>
    	</div>
    	<!-- ToolBar End /////////////////////////////////////-->	
@@ -84,7 +98,7 @@
 		<div class="row">
 		
 			<div class="col-md-6">
-					<img src="/images/logo-spring.png" class="img-rounded" width="100%" />
+					<img src="/images/align.png" class="img-rounded" width="100%" />
 			</div>
 	   	 	
 	 	 	<div class="col-md-6">
@@ -112,8 +126,8 @@
 					  
 					  <div class="form-group">
 					    <div class="col-sm-offset-4 col-sm-6 text-center">
-					      <button type="button" class="btn btn-primary"  >로 &nbsp;그 &nbsp;인</button>
-					      <a class="btn btn-primary btn" href="#" role="button">회 &nbsp;원 &nbsp;가 &nbsp;입</a>
+					      <button type="button" class="btn btn-custom"  >로 &nbsp;그 &nbsp;인</button>
+					      <a class="btn btn-custom btn" href="#" role="button">회 &nbsp;원 &nbsp;가 &nbsp;입</a>
 					    </div>
 					  </div>
 			
