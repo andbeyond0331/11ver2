@@ -82,5 +82,7 @@
 		<property name="defaultErrorView"	value="/common/error.jsp" />
 		
 	</bean>
-	
+	<!-- spring-upload -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
+	<!-- spring-upload -->
 </beans>

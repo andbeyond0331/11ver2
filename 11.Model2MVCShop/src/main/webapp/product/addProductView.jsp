@@ -76,7 +76,7 @@ function fncAddProduct(){
 
 	//document.detailForm.action='/product/addProduct';
 	//document.detailForm.submit();
-	$("form").attr("method", "POST").attr("action","/product/addProduct").submit();
+	$("form").attr("method", "POST").attr("enctype", "multipart/form-data").attr("action","/product/addProduct").submit();
 }
 
 

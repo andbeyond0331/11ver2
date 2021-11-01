@@ -42,6 +42,8 @@
      <!--  ///////////////////////// JavaScript ////////////////////////// -->
 	<script type="text/javascript">
 	
+	
+	
 		//=============    검색 / page 두가지 경우 모두  Event  처리 =============	
 		function fncGetProductList(currentPage) {
 			var menu=$("input[name='menu']").val();
@@ -261,9 +263,10 @@
 			  </td>
 			</tr>
           </c:forEach>
-        
+         	<tr align="left" name="autocomplete"></tr>
         </tbody>
-      
+      <!-- //////auto 구현할 부분 /////////// -->
+     
       </table>
 	  <!--  table End /////////////////////////////////////-->
 	  
