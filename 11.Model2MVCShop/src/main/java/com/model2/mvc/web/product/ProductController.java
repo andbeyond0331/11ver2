@@ -43,11 +43,11 @@ public class ProductController {
 	//==> classpath:config/common.properties  ,  classpath:config/commonservice.xml 참조 할것
 	//==> 아래의 두개를 주석을 풀어 의미를 확인 할것
 	//@Value("#{commonProperties['pageUnit']}")
-	@Value("#{commonProperties['pageUnit'] ?: 3}")
+	@Value("#{commonProperties['pageUnit'] ?: 5}")
 	int pageUnit;
 	
 	//@Value("#{commonProperties['pageSize']}")
-	@Value("#{commonProperties['pageSize'] ?: 2}")
+	@Value("#{commonProperties['pageSize'] ?: 5}")
 	int pageSize;
 	
 	

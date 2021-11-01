@@ -2,6 +2,7 @@
     pageEncoding="EUC-KR"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -43,63 +44,81 @@
 	<script type="text/javascript">
 	
 		//=============    검색 / page 두가지 경우 모두  Event  처리 =============	
-		function fncGetProductList(currentPage) {
-			var menu=$("input[name='menu']").val();
-			
-			$("#currentPage").val(currentPage)
-			$("form").attr("method" , "POST").attr("action" , "/product/listProduct?menu="+menu).submit();
+		function fncGetPurchaseList(currentPage) {
+			alert("currentPage : " + currentPage);
+			$("#currentPage").val(currentPage);
+			$("form").attr("method" , "POST").attr("action" , "/purchase/listPurchase").submit();
 		}
 		
-		
-		//============= "검색"  Event  처리 =============	
-		 $(function() {
-			 //==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
-			 $( "button.btn.btn-default" ).on("click" , function() {
-				fncGetProductList(1);
-			});
-		 });
-		
-		
-		//============= userId 에 회원정보보기  Event  처리(Click) =============	
-		 $(function() {
-			// alert("why? : "+$(  "td:nth-child(6) > i" ).html);
-			 var menu=$("input[name='menu']").val();
+		$(function() {
+			 //alert("why? : "+$(  "td:nth-child(7) > i" ).html);
 			 
-			 if(menu=="manage"){
-				 //==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
-				$( "td:nth-child(2)" ).on("click" , function() {
-					 self.location ="/product/updateProduct?prodNo="+$(this).find("input[name=prodNo]").val();
-				});
-			 }
 			 
-			 if(menu=="search"){
 				 //==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
-				$( "td:nth-child(2)" ).on("click" , function() {
-					 self.location ="/product/getProduct?prodNo="+$(this).find("input[name=prodNo]").val();
+				$( "td:nth-child(1)" ).on("click" , function() {
+					var tranNo=$("td:nth-child(1)").data("val");
+					 self.location ="/purchase/updatePurchase?tranNo="+tranNo;
 				});
-			 }
 		
 			
 						
 			//==> userId LINK Event End User 에게 보일수 있도록 
-			$( "td:nth-child(2)" ).css("color" , "red");
 			
-		});	
+	
 		
-		
+		 $( "td:nth-child(2)" ).on("click" , function() {
+				//Debug..
+				//alert(  $( this ).text().trim() );
+				/////////추가, 변경//////////
+				//self.location ="/user/getUser?userId="+$(this).data("val");
+				///////////////////////////////
+				var userId = $(this).data("val");
+				alert("userId : " +userId);
+				$.ajax( 
+						{
+							url : "/user/json/getUser/"+userId ,
+							method : "GET" ,
+							dataType : "json" ,
+							headers : {
+								"Accept" : "application/json",
+								"Content-Type" : "application/json"
+							},
+							success : function(JSONData , status) {
+
+								//Debug...
+								//alert(status);
+								//Debug...
+								//alert("JSONData : \n"+JSONData);
+								
+								var displayValue = "<h3>"
+															+"아이디 : "+JSONData.userId+"<br/>"
+															+"이  름 : "+JSONData.userName+"<br/>"
+															+"이메일 : "+JSONData.email+"<br/>"
+															+"ROLE : "+JSONData.role+"<br/>"
+															+"등록일 : "+JSONData.regDateString+"<br/>"
+															+"</h3>";
+								//Debug...									
+								//alert(displayValue);
+								$("h3").remove();
+								$( "#"+userId+"" ).html(displayValue);
+							}
+					});
+
+			});
+		 });
 		//============= userId 에 회원정보보기  Event  처리 (double Click)=============
 		 $(function() {
 			 
 			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
-			$(  "td:nth-child(6) > i" ).on("click" , function() {
+			$(  "td:nth-child(7) > i" ).on("click" , function() {
 					
 				
 
-					var prodNo = $(this).find("#prodNo").val();
+					var tranNo = $(this).find("#tranNo").val();
 				
 					$.ajax( 
 							{
-								url : "/product/json/getProduct/"+prodNo ,
+								url : "/purchase/json/getPurchase/"+tranNo ,
 								method : "GET" ,
 								dataType : "json" ,
 								headers : {
@@ -109,20 +128,21 @@
 								success : function(JSONData , status) {
 
 									var displayValue = "<h6>"
-											+"상 품 번 호 : "+JSONData.prodNo+"<br/>"
-											+"상  품  명 : "+JSONData.prodName+"<br/>"
-											+"상품  이미지 : "+JSONData.fileName+"<br/>"
-											+"상품상세정보 : "+JSONData.prodDetail+"<br/>"
-											+"제 조 일 자 : "+JSONData.manuDateString+"<br/>"
-											+"가      격 : "+JSONData.price+"<br/>"
-											+"등 록 일 자 : "+JSONData.regDateString+"<br/>"
+										+"주문번호 : "+JSONData.tranNo+"<br/>"
+										+"구매자 아이디 : "+JSONData.userId+"<br/>"
+										+"구매 방법 : "+JSONData.paymentOption+"<br/>"
+										+"받는 사람 : "+JSONData.receiverName+"<br/>"
+										+"연락처 : "+JSONData.receiverPhone+"<br/>"
+										+"배송지 : "+JSONData.divyAddr+"<br/>"
+										+"요청사항 : "+JSONData.divyRequest+"<br/>"
+										+"배송희망날짜 : "+JSONData.divyDateString+"<br/>"
+										+"주문날짜 : "+JSONData.orderDate+"<br/>"
 																+"</h6>";
 									$("h6").remove();
-									$( "#"+prodNo+"" ).html(displayValue);
+									$( "#"+tranNo+"" ).html(displayValue);
 								}
 						});
-						////////////////////////////////////////////////////////////////////////////////////////////
-					
+						
 			});
 			
 			//==> prodName LINK Event End User 에게 보일수 있도록 
@@ -132,6 +152,7 @@
 			$( "td:nth-child(4)" ).css("background-color" , "black");
 			$( "td:nth-child(5)" ).css("background-color" , "black");
 			$( "td:nth-child(6)" ).css("background-color" , "black");
+			$( "td:nth-child(7)" ).css("background-color" , "black");
 			
 			$( "td:nth-child(1)" ).css("color" , "lightgreen");
 			$( "td:nth-child(2)" ).css("color" , "lightgreen");
@@ -139,6 +160,7 @@
 			$( "td:nth-child(4)" ).css("color" , "lightgreen");
 			$( "td:nth-child(5)" ).css("color" , "lightgreen");
 			$( "td:nth-child(6)" ).css("color" , "lightgreen");
+			$( "td:nth-child(7)" ).css("color" , "lightgreen");
 			$("h7").css("color" , "lightgreen");
 			
 			//==> 아래와 같이 정의한 이유는 ??
@@ -159,12 +181,7 @@
 	<div class="container">
 	
 		<div class="page-header text-info">
-			<c:if test="${menu eq 'search' }">
-				<h3>상품 목록 조회</h3>
-			</c:if>
-			<c:if test="${menu eq 'manage' }">
-				<h3>상품 관리</h3>
-			</c:if>
+			구매 목록 조회
 			
 	       
 	    </div>
@@ -177,31 +194,7 @@
 		    		전체  ${resultPage.totalCount } 건수, 현재 ${resultPage.currentPage}  페이지
 		    	</p>
 		    </div>
-		    
-		    <div class="col-md-6 text-right">
-			    <form class="form-inline" name="detailForm">
-			    
-				  <div class="form-group">
-				    <select class="form-control" name="searchCondition" >
-						<option value="0"  ${ ! empty search.searchCondition && search.searchCondition==0 ? "selected" : "" }>상품번호</option>
-						<option value="1"  ${ ! empty search.searchCondition && search.searchCondition==1 ? "selected" : "" }>상품명</option>
-						<option value="2"  ${ ! empty search.searchCondition && search.searchCondition==2 ? "selected" : "" }>상품가격</option>
-					</select>
-				  </div>
-				  
-				  <div class="form-group">
-				    <label class="sr-only" for="searchKeyword">검색어</label>
-				    <input type="text" class="form-control" id="searchKeyword" name="searchKeyword"  placeholder="검색어"
-				    			 value="${! empty search.searchKeyword ? search.searchKeyword : '' }"  >
-				  </div>
-				  
-				  <button type="button" class="btn btn-default">검색</button>
-				  
-				  <!-- PageNavigation 선택 페이지 값을 보내는 부분 -->
-				  <input type="hidden" id="currentPage" name="currentPage" value=""/>
-				  
-				</form>
-	    	</div>
+
 	    	
 		</div>
 		<!-- table 위쪽 검색 Start /////////////////////////////////////-->
@@ -213,55 +206,62 @@
         <thead>
           <tr>
             <th align="center">No</th>
-            <th align="left" >상품명</th>
-            <th align="left">가격</th>
-            <th align="left">등록일</th>
-            <th align="left">현재상태</th>
+            <th align="left" >회원ID</th>
+            <th align="left">회원명</th>
+            <th align="left">전화번호</th>
+            <th align="left">배송현황</th>
+            <th align="left">정보수정</th>
           </tr>
         </thead>
        
 		<tbody>
 		
 		  <c:set var="i" value="0" />
-		  <c:forEach var="product" items="${list}">
+		  <c:forEach var="purchase" items="${list}">
 			<c:set var="i" value="${ i+1 }" />
 			<tr>
-			  <td align="center">${ i }</td>
-			  <td align="left">${product.prodName}
-			  <input type="hidden" id="prodNo" name="prodNo" value="${product.prodNo}"/>
-			  <input type="hidden" id="menu" name="menu" value="${param.menu}"/>
-			  </td>
-			  <td align="left">${product.price}</td>
-			  <td align="left">${product.regDate}</td>
-			  <td align="left">
+			  <td align="center" data-val="${purchase.tranNo }">${ i }</td>
+			  <td align="left" data-val="${user.userId }">${user.userId }</td>
+			 
+			  <td align="left">${purchase.receiverName}</td>
+			  <td align="left">${purchase.receiverPhone}</td>
+			  <td align="left">현재
 			  	<c:choose>
-					<c:when test="${!empty product.proTranCode && product.proTranCode eq '002'}">
-				
+				<c:when test="${!empty purchase.tranCode && purchase.tranCode eq '002' }">
 					구매 완료
-					<c:choose>
-						<c:when test="${menu eq 'manage'}">
-								<!-- ////////////////// jQuery Event 처리로 변경됨 /////////////////////////
-							<a href="/purchase/updateTranCodeByProd?prodNo=${product.prodNo}&tranCode=${product.proTranCode}" onClick="return confirm('해당 상품 배송을 시작하시겠습니까?')">배송하기
-							</a>
-							//////////////////////-->
-							배송하기
-						</c:when>
-					</c:choose>
 				</c:when>
-					
-				<c:when test="${!empty product.proTranCode && product.proTranCode eq '003'}">배송 중</c:when>
-				<c:when test="${!empty product.proTranCode && product.proTranCode eq '000'}">재고 없음</c:when>
-				<c:otherwise>판매 중</c:otherwise>
+				<c:when test="${!empty purchase.tranCode && purchase.tranCode eq '003' }">
+					배송 중
+				</c:when>
+				<c:when test="${!empty purchase.tranCode && purchase.tranCode eq '000' }">
+					배송 완료
+				</c:when>
+				<c:otherwise> 판매 중</c:otherwise>
+				</c:choose>
+				상태입니다.
+			  </td>
+			  <td align="left" id="arrive">
+			  	<c:choose>
+					<c:when test="${! empty purchase.tranCode }">
+						<c:if test="${purchase.tranCode eq '003' }">
+							<!-- //////////jQuery /////////////////
+							<a href="/purchase/updateTranCode?tranNo=${purchase.tranNo }&tranCode=003" onClick="return confirm('해당 상품을 수령하셨습니까?')">물건도착</a>
+							////////////////////////////-->
+							<input type="hidden" name="tranNo" value="${purchase.tranNo }"/>
+							물건 도착
+						</c:if>
+					</c:when>
 				</c:choose>
 			  </td>
 			  <td align="left">
-			  	<i class="glyphicon glyphicon-ok" id= "${product.prodNo}">
-			  	<input type="hidden" id="prodNo" value="${product.prodNo}">
-			  	<input type="hidden" id="prodName" value="${product.prodName}"></i>
+			  	<i class="glyphicon glyphicon-ok" id= "${purchase.tranNo}">
+			  	<input type="hidden" id="tranNo" value="${purchase.tranNo}">
+				</i>
 			  </td>
-			</tr>
+			  </tr>
+		
+        	
           </c:forEach>
-        
         </tbody>
       
       </table>
@@ -272,7 +272,7 @@
  	
  	
  	<!-- PageNavigation Start... -->
-	<jsp:include page="../common/pageNavigator_new2.jsp"/>
+	<jsp:include page="../common/pageNavigator_new3.jsp"/>
 	<!-- PageNavigation End... -->
 	
 </body>

@@ -141,5 +141,17 @@
 	 		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 			$(self.location).attr("href","/product/listProduct?menu=search");
 		});
+	 	
+	 	//=============  구매이력조회 Event  처리 =============	
+	 	$( "a:contains('구매이력조회')" ).on("click" , function() {
+	 		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+			$(self.location).attr("href","/purchase/listPurchase");
+		});
+	 	
+	 	//=============  최근본상품 Event  처리 =============	
+	 	$( "a:contains('최근본상품')" ).on("click" , function() {
+	 		//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
+			$(self.location).attr("href","/history.jsp");
+		});
 		
 	</script>  
