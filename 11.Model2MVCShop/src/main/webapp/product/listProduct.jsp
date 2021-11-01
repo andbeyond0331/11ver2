@@ -62,7 +62,7 @@
 		
 		//============= userId 에 회원정보보기  Event  처리(Click) =============	
 		 $(function() {
-			 
+			 alert("why? : "+$(  "td:nth-child(6) > i" ).html);
 			 var menu=$("input[name='menu']").val();
 			 
 			 if(menu=="manage"){
@@ -91,9 +91,11 @@
 		 $(function() {
 			 
 			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
-			$(  "td:nth-child(5) > i" ).on("click" , function() {
+			$(  "td:nth-child(6) > i" ).on("click" , function() {
+					
+				
 
-					var prodNo = $(this).find("input[name=prodNo]").val();
+					var prodNo = $(this).find("#prodNo").val();
 				
 					$.ajax( 
 							{
@@ -253,8 +255,9 @@
 				</c:choose>
 			  </td>
 			  <td align="left">
-			  	<i class="glyphicon glyphicon-ok" id= "${product.prodNo}"></i>
-			  	<input type="hidden" value="${product.prodName}">
+			  	<i class="glyphicon glyphicon-ok" id= "${product.prodNo}">
+			  	<input type="hidden" id="prodNo" value="${product.prodNo}">
+			  	<input type="hidden" id="prodName" value="${product.prodName}"></i>
 			  </td>
 			</tr>
           </c:forEach>

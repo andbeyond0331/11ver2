@@ -72,6 +72,11 @@
 	    color: white;
 	} */
 	
+	.navbar-brand {
+		height: auto;
+		padding: 5px;
+	}
+	
 	</style>
    	
    	<!--  ///////////////////////// JavaScript ////////////////////////// -->
