@@ -91,6 +91,12 @@
 		
 		//============= userId 에 회원정보보기  Event  처리 (double Click)=============
 		 $(function() {
+			 $(  "td:nth-child(5)" ).on("click" , function() {
+				 var tranCode=$(this).data("val");
+				 var prodNo=$(this).find("input[name=prodNo]").val();
+				 self.location="/purchase/updateTranCodeByProd?prodNo="+prodNo+"&tranCode="+tranCode;
+			 });
+			 
 			 
 			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 			$(  "td:nth-child(6) > i" ).on("click" , function() {
@@ -235,7 +241,8 @@
 			  </td>
 			  <td align="left">${product.price}</td>
 			  <td align="left">${product.regDate}</td>
-			  <td align="left">
+			  <td align="left" data-val="${product.proTranCode }">
+			  	<input type="hidden" id="prodNo" name="prodNo" value="${product.prodNo}"/>
 			  	<c:choose>
 					<c:when test="${!empty product.proTranCode && product.proTranCode eq '002'}">
 				

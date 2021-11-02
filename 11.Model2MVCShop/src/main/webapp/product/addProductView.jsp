@@ -12,14 +12,16 @@
 <!--  ///////////////////////// Bootstrap, jQuery CDN ////////////////////////// -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
-	
-	<!--  ///////////////////////// CSS ////////////////////////// -->
-<title>상품등록</title>
 	<!--  달력 데이터 추가(jQuery) -->
   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+	<!-- CDN(Content Delivery Network) 호스트 사용 -->
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+<title>상품등록</title>
+	<!--  ///////////////////////// CSS ////////////////////////// -->
 
 <style>
        body > div.container{
@@ -76,7 +78,7 @@ function fncAddProduct(){
 
 	//document.detailForm.action='/product/addProduct';
 	//document.detailForm.submit();
-	$("form").attr("method", "POST").attr("enctype", "multipart/form-data").attr("action","/product/addProduct").submit();
+	$("form").attr("method", "POST").attr("action","/product/addProduct").attr("enctype", "multipart/form-data").submit();
 }
 
 
@@ -157,7 +159,7 @@ $(function(){
 		  <div class="form-group">
 		    <label for="fileName" class="col-sm-offset-1 col-sm-3 control-label">상품이미지</label>
 		    <div class="col-sm-4">
-		      <input type="file" class="form-control" id="fileName" name="fileName" placeholder="상품이미지">
+		      <input type="file" class="form-control" id="fileName1" name="fileName1" placeholder="상품이미지">
 		      
 		    </div>
 		  </div>

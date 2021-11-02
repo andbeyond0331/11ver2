@@ -77,6 +77,10 @@
 		padding: 5px;
 	}
 	
+	#thumbnail {
+		color: blue;
+	}
+	
 	</style>
    	
    	<!--  ///////////////////////// JavaScript ////////////////////////// -->
@@ -215,7 +219,7 @@
 			  </div>
 			  <div class="col-xs-6 col-md-3">
 			    <a href="#" class="thumbnail">
-			      <img src="/images/align.png" alt="100%x180" style="height: 200px; width: 100%; display: block; data-holder-rendered="true">
+			      <img src="/images/align.png" alt="100%x180" style="color: blue; height: 200px; width: 100%; display: block; data-holder-rendered="true">
 			    </a>
 			  </div>
 			</div>

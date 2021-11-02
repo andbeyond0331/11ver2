@@ -8,6 +8,9 @@
 <html lang="ko">
 <head>
 	<meta charset="EUC-KR">
+		<!--  달력 데이터 추가(jQuery) -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
 	
 	<!-- 참조 : http://getbootstrap.com/css/   참조 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,6 +27,10 @@
    
     <!-- Bootstrap Dropdown Hover JS -->
    <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
+   
+<!-- CDN(Content Delivery Network) 호스트 사용 -->
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
    
 	<!--  ///////////////////////// CSS ////////////////////////// -->
 	<style>
@@ -62,7 +69,23 @@
 	//document.detailForm.submit();
 	$("form").attr("method", "POST").attr("action","/product/updateProduct?prodNo="+prodNo).submit();
 }
-	
+		$(function(){
+			$($('input:text[name="manuDate"]')).datepicker({
+				showOn : "button",
+				buttonImage: "../images/ct_icon_date.gif",
+				buttonImageOnly: true,
+				buttonText: "Select date"
+				
+			});
+			
+			$($('input:text[name="manuDate"]')).datepicker( "option", "showAnim", "bounce" );
+			//$($('input:text[name="manuDate"]')).datepicker( "option", "dateFormat", "yy-mm-dd" );
+			
+			var manuDate = $("#datepicker").val();
+			console.log(manuDate);
+			
+			$("#datepicker").val(manuDate);
+		});
 	</script>
 	
 </head>

@@ -52,14 +52,19 @@
 		
 		$(function() {
 			 //alert("why? : "+$(  "td:nth-child(7) > i" ).html);
-			 
+			  alert("받아오니?"+$( "td:nth-child(6)" ).data("val"));
 			 
 				 //==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 				$( "td:nth-child(1)" ).on("click" , function() {
 					var tranNo=$("td:nth-child(1)").data("val");
 					 self.location ="/purchase/updatePurchase?tranNo="+tranNo;
 				});
-		
+				
+				 $( "td:nth-child(6)" ).on("click", function(){
+					var tranNo=$( "td:nth-child(6)" ).data("val");
+					alert("arrive tranNo : "+tranNo);
+					self.location="/purchase/updateTranCode?tranNo="+tranNo+"&tranCode=003";
+				 });
 			
 						
 			//==> userId LINK Event End User 에게 보일수 있도록 
@@ -108,6 +113,8 @@
 		 });
 		//============= userId 에 회원정보보기  Event  처리 (double Click)=============
 		 $(function() {
+			 
+			
 			 
 			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 			$(  "td:nth-child(7) > i" ).on("click" , function() {
@@ -240,7 +247,7 @@
 				</c:choose>
 				상태입니다.
 			  </td>
-			  <td align="left" id="arrive">
+			  <td align="left" data-val="${purchase.tranNo }">
 			  	<c:choose>
 					<c:when test="${! empty purchase.tranCode }">
 						<c:if test="${purchase.tranCode eq '003' }">

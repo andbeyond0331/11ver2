@@ -46,12 +46,14 @@ public class ProductController {
 	//==> classpath:config/common.properties  ,  classpath:config/commonservice.xml 참조 할것
 	//==> 아래의 두개를 주석을 풀어 의미를 확인 할것
 	//@Value("#{commonProperties['pageUnit']}")
-	@Value("#{commonProperties['pageUnit'] ?: 5}")
+	@Value("#{commonProperties['pageUnit'] ?: 3}")
 	int pageUnit;
 	
 	//@Value("#{commonProperties['pageSize']}")
-	@Value("#{commonProperties['pageSize'] ?: 5}")
+	@Value("#{commonProperties['pageSize'] ?: 2}")
 	int pageSize;
+	
+	private static final String FILE_SERVER_PATH="C:/wsPMJ/images/";
 	
 	
 	@RequestMapping(value="addProduct", method=RequestMethod.GET)
@@ -62,24 +64,22 @@ public class ProductController {
 		return "redirect:/product/addProductView.jsp";
 	}
 	
-	private static final String FILE_SERVER_PATH="C:/test";
-	
 	@RequestMapping(value="addProduct", method=RequestMethod.POST)
-	public String addProduct( @ModelAttribute("product") Product product, @RequestParam("fileName") MultipartFile file, ModelAndView mv, Model model ) throws Exception {
+	public String addProduct( @ModelAttribute("product") Product product , ModelAndView mv, Model model, @RequestParam("fileName1") MultipartFile fileName) throws Exception {
 
 		System.out.println("/product/addProduct : POST");
 		//Business Logic
-		//파일 업로드
-		if(!file.getOriginalFilename().isEmpty()) {
-			file.transferTo(new File(FILE_SERVER_PATH, file.getOriginalFilename()));
+		
+		if(!fileName.getOriginalFilename().isEmpty()) {
+			fileName.transferTo(new File(FILE_SERVER_PATH, fileName.getOriginalFilename()));
 			model.addAttribute("msg", "File uploaded successfully.");
 		}else {
 			model.addAttribute("msg", "Please select a valid mediaFile..");
 		}
 		
+		product.setFileName(fileName.getOriginalFilename());
 		
 		product.setProTranCode("001");
-		
 		productService.addProduct(product);
 		
 		System.out.println("product : "+product);
