@@ -52,7 +52,7 @@
 		
 		$(function() {
 			 //alert("why? : "+$(  "td:nth-child(7) > i" ).html);
-			  alert("받아오니?"+$( "td:nth-child(6)" ).data("val"));
+			 // alert("받아오니?"+$( "td:nth-child(6)" ).data("val"));
 			 
 				 //==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 				$( "td:nth-child(1)" ).on("click" , function() {
@@ -75,9 +75,9 @@
 				//Debug..
 				//alert(  $( this ).text().trim() );
 				/////////추가, 변경//////////
-				//self.location ="/user/getUser?userId="+$(this).data("val");
+				self.location ="/user/getUser?userId="+$(this).data("val");
 				///////////////////////////////
-				var userId = $(this).data("val");
+				/* var userId = $(this).data("val");
 				alert("userId : " +userId);
 				$.ajax( 
 						{
@@ -95,19 +95,21 @@
 								//Debug...
 								//alert("JSONData : \n"+JSONData);
 								
-								var displayValue = "<h3>"
+								var displayValue = "<h6>"
 															+"아이디 : "+JSONData.userId+"<br/>"
 															+"이  름 : "+JSONData.userName+"<br/>"
 															+"이메일 : "+JSONData.email+"<br/>"
 															+"ROLE : "+JSONData.role+"<br/>"
 															+"등록일 : "+JSONData.regDateString+"<br/>"
-															+"</h3>";
+															+"</h6>";
 								//Debug...									
-								//alert(displayValue);
-								$("h3").remove();
-								$( "#"+userId+"" ).html(displayValue);
+								alert(displayValue);
+								alert($("td:nth-child(7)" ).html());
+								$("h6").remove();
+								$("td:nth-child(7)" ).html(displayValue);
 							}
-					});
+					}); */
+					
 
 			});
 		 });
@@ -122,7 +124,7 @@
 				
 
 					var tranNo = $(this).find("#tranNo").val();
-				
+					
 					$.ajax( 
 							{
 								url : "/purchase/json/getPurchase/"+tranNo ,
@@ -260,10 +262,11 @@
 					</c:when>
 				</c:choose>
 			  </td>
-			  <td align="left">
+			  <td align="left" data-userId="${user.userId }">
 			  	<i class="glyphicon glyphicon-ok" id= "${purchase.tranNo}">
 			  	<input type="hidden" id="tranNo" value="${purchase.tranNo}">
 				</i>
+				
 			  </td>
 			  </tr>
 		

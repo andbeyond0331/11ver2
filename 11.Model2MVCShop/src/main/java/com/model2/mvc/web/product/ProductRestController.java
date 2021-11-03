@@ -77,7 +77,7 @@ public class ProductRestController {
 		return product;
 	}
 	
-	@RequestMapping( value="json/listProduct/{menu}")
+	@RequestMapping( value="json/listProduct")
 	public Map<String, Object> listProduct(@RequestBody Search search, @PathVariable(value="menu", required=false) String menu) throws Exception {
 		
 		System.out.println("/product/json/listProduct : POST/GET");

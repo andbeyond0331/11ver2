@@ -36,6 +36,20 @@
 	<style>
 		body {
             padding-top : 50px;
+            background-color: black;
+            color: lightgreen;
+        }
+        
+        .btn-custom{
+        	background-color: black;
+        	color: lightgreen;
+        }
+        .btn-custom:hover{
+        	color: #B97FF5;	
+        }
+        
+        .form-control {
+        	background-color: lightgreen;	
         }
     </style>
     
@@ -79,12 +93,14 @@
 			});
 			
 			$($('input:text[name="manuDate"]')).datepicker( "option", "showAnim", "bounce" );
-			//$($('input:text[name="manuDate"]')).datepicker( "option", "dateFormat", "yy-mm-dd" );
+			$($('input:text[name="manuDate"]')).datepicker( "option", "dateFormat", "yy-mm-dd" );
 			
 			var manuDate = $("#datepicker").val();
 			console.log(manuDate);
 			
 			$("#datepicker").val(manuDate);
+			
+			
 		});
 	</script>
 	
@@ -126,7 +142,7 @@
 		  <div class="form-group">
 		    <label for="manuDate" class="col-sm-offset-1 col-sm-3 control-label">제조일자</label>
 		    <div class="col-sm-4">
-		      <input type="text" class="form-control" id="manuDate" name="manuDate" value="${product.manuDate }" placeholder="변경 제조일자">
+		      <input type="text" class="form-control" id="manuDate" name="manuDate" value="${product.manuDate }">
 		    </div>
 		  </div>
 		  
@@ -146,8 +162,8 @@
 
 		  <div class="form-group">
 		    <div class="col-sm-offset-4  col-sm-4 text-center">
-		      <button type="button" class="btn btn-primary"  >수 &nbsp;정</button>
-			  <a class="btn btn-primary btn" href="#" role="button">취 &nbsp;소</a>
+		      <button type="button" class="btn btn-custom"  >수 &nbsp;정</button>
+			  <a class="btn btn-custom btn" href="#" role="button">취 &nbsp;소</a>
 		    </div>
 		  </div>
 		</form>

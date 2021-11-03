@@ -101,7 +101,28 @@
 				self.location = "/user/login"
 			});
 		});
-		
+		var prodNo="prodNo";
+		$.ajax(
+			{
+				url:"/product/json/listProduct/",
+				dataType : "json",
+				headers : {
+					"Accept" : "application/json",
+					"Content-Type" : "application/json"
+				},
+				success : function(JSONData, status) {
+					var displayValue="<div class=\"row\">"
+									  +"<div class=\"col-xs-6 col-md-3\">"
+									   +"<a href=\"#\" class=\"thumbnail\">" 
+									     +"<img src=\"/images/align.png\" alt=\"100%x180\" style=\"height: 200px; width: 100%; display: block; data-holder-rendered=\"true\">" 
+									    +"</a>"
+									    +"</div>";
+					$("#"+prodNo"").html(displayValue);
+									  
+				}
+				
+			});
+		});
 		
 	</script>	
 	
@@ -201,7 +222,7 @@
 	 	 	
 	   	 	<!--  Main end /////////////////////////////////////-->   		
 	 	 	<!--  myMain -->
-	 	 	<div class="row">
+	 	 	<!-- <div class="row">
 			  <div class="col-xs-6 col-md-3">
 			    <a href="#" class="thumbnail">
 			      <img src="/images/align.png" alt="100%x180" style="height: 200px; width: 100%; display: block; data-holder-rendered="true">
@@ -222,7 +243,9 @@
 			      <img src="/images/align.png" alt="100%x180" style="color: blue; height: 200px; width: 100%; display: block; data-holder-rendered="true">
 			    </a>
 			  </div>
-			</div>
+			</div> -->
+			<input type="hidden" id="${product.prodNo }"/>
+				
 		</div>
 		<!-- 다단레이아웃  end /////////////////////////////////////-->
 		
