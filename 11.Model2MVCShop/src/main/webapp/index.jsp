@@ -101,29 +101,18 @@
 				self.location = "/user/login"
 			});
 		});
-		var prodNo="prodNo";
-		$.ajax(
-			{
-				url:"/product/json/listProduct/",
-				dataType : "json",
-				headers : {
-					"Accept" : "application/json",
-					"Content-Type" : "application/json"
-				},
-				success : function(JSONData, status) {
-					var displayValue="<div class=\"row\">"
-									  +"<div class=\"col-xs-6 col-md-3\">"
-									   +"<a href=\"#\" class=\"thumbnail\">" 
-									     +"<img src=\"/images/align.png\" alt=\"100%x180\" style=\"height: 200px; width: 100%; display: block; data-holder-rendered=\"true\">" 
-									    +"</a>"
-									    +"</div>";
-					$("#"+prodNo"").html(displayValue);
-									  
-				}
-				
-			});
-		});
 		
+		$(function(){
+			$("a").on("click",function(){
+				
+			$(this).css({
+			    "-webkit-transform": "rotate(180deg)",
+			    "-moz-transform": "rotate(180deg)",
+			    "transform": "rotate(180deg)" /* For modern browsers(CSS3)  */
+			});
+			});
+
+		}):
 	</script>	
 	
 </head>

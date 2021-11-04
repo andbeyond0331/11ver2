@@ -28,6 +28,13 @@
         	border: 3px solid #D6CDB7;
             margin-top: 10px;
         }
+        
+        div div:nth-child(3) div img {
+        	position: absolute;
+        	top: 50%;
+        	margin-top: -9px;
+        	right: -10px;
+        }
     </style>
    <!-- ///////////javaScript////////////	 --> 
 <script type="text/javascript">
@@ -143,7 +150,7 @@ $(function(){
 		  
 		  <div class="form-group">
 		    <label for="manuDate" class="col-sm-offset-1 col-sm-3 control-label">제조일자
-		    <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/></label>
+		   </label>
 		    <div class="col-sm-4">
 		      <input type="text" class="form-control" id="manuDate" name="manuDate">
 		    </div>
