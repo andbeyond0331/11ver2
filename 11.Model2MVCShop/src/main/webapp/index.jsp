@@ -101,18 +101,7 @@
 				self.location = "/user/login"
 			});
 		});
-		
-		$(function(){
-			$("a").on("click",function(){
-				
-			$(this).css({
-			    "-webkit-transform": "rotate(180deg)",
-			    "-moz-transform": "rotate(180deg)",
-			    "transform": "rotate(180deg)" /* For modern browsers(CSS3)  */
-			});
-			});
-
-		}):
+	
 	</script>	
 	
 </head>
