@@ -1,5 +1,7 @@
 package com.model2.mvc.service.user.impl;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -49,5 +51,14 @@ public class UserDaoImpl implements UserDao{
 	// 게시판 Page 처리를 위한 전체 Row(totalCount)  return
 	public int getTotalCount(Search search) throws Exception {
 		return sqlSession.selectOne("UserMapper.getTotalCount", search);
+	}
+
+	@Override
+	public List<String> listUserAuto(Search search) throws Exception {
+		List<String> arr=new ArrayList<String>();
+		arr = sqlSession.selectList("UserMapper.listUserAuto",search);
+		HashSet<String> hash = new HashSet<String>(arr);
+		List<String> resource = new ArrayList<String>(hash);
+		return resource;
 	}
 }

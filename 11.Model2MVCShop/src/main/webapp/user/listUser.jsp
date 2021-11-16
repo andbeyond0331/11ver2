@@ -44,6 +44,39 @@
      <!--  ///////////////////////// JavaScript ////////////////////////// -->
 	<script type="text/javascript">
 	
+	$( function() {
+	    
+	    $( 'input[name="searchKeyword"]').keyup(function(){
+	    	var searchKeyword = $(this).val();
+	    	console.log("searchKeyword : " + searchKeyword);
+	    	var searchCondition = $('select[name="searchCondition"]').val();
+	    	console.log("searchCondition : " + searchCondition);
+	    
+	    	  $.ajax({
+	    		  
+	    		  url : "/user/json/listUserAuto/"+searchKeyword+"/"+searchCondition,
+	    		  method : "GET",
+	    		  headers : {
+	    			  "Accept" : "application/json",
+					  "Content-Type" : "application/json"
+	    		  },
+	    		  dataType:"json",
+	    		  success: function(JSONData, status){
+	    			  var availableTags = JSONData;
+	    			  console.log(JSONData);
+	    			  $(function(){
+	    				  $('input[name="searchKeyword"]').autocomplete({
+	    					  source: availableTags
+	    				  });
+	    			  });
+	    				  
+	    		  },
+	    	  });
+	    });
+	    
+	    
+	    });
+	
 		//=============    검색 / page 두가지 경우 모두  Event  처리 =============	
 		function fncGetUserList(currentPage) {
 			$("#currentPage").val(currentPage)
@@ -155,7 +188,7 @@
 				  <div class="form-group">
 				    <label class="sr-only" for="searchKeyword">검색어</label>
 				    <input type="text" class="form-control" id="searchKeyword" name="searchKeyword"  placeholder="검색어"
-				    			 value="${! empty search.searchKeyword ? search.searchKeyword : '' }"  >
+				    			 value="${search.searchKeyword}"  >
 				  </div>
 				  
 				  <button type="button" class="btn btn-default">검색</button>

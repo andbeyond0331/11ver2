@@ -23,8 +23,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.Product;
+import com.model2.mvc.service.domain.Purchase;
 import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.product.ProductService;
+import com.model2.mvc.service.purchase.PurchaseService;
 import com.model2.mvc.service.user.UserService;
 
 
@@ -37,6 +39,10 @@ public class ProductController {
 	@Autowired
 	@Qualifier("productServiceImpl")
 	private ProductService productService;
+	
+	@Autowired
+	@Qualifier("purchaseServiceImpl")
+	private PurchaseService purchaseService;
 	//setter Method 구현 않음
 		
 	public ProductController(){
@@ -151,17 +157,18 @@ public class ProductController {
 		return "forward:/product/updateProductView.jsp";
 	}
 	
-	@RequestMapping(value="updateProduct", method=RequestMethod.POST)
-	public String updateProduct( @ModelAttribute("product") Product product, Model model , HttpSession session) throws Exception{
-
-		System.out.println("/product/updateProduct : POST");
-		//Business Logic
-		productService.updateProduct(product);
-		
-		session.setAttribute("product", product);
-		
-		return "redirect:/product/getProduct?prodNo="+product.getProdNo();
-	}
+//	@RequestMapping(value="updateProduct2", method=RequestMethod.POST)
+//	public String updateProduct( @ModelAttribute("product") Product product, Model model , HttpSession session) throws Exception{
+//
+//		System.out.println("/product/updateProduct : POST");
+//		//Business Logic
+//		
+//		productService.updateProduct2(product);
+//		
+//		session.setAttribute("product", product);
+//		
+//		return "redirect:/product/getProduct?prodNo="+product.getProdNo();
+//	}
 	
 	@RequestMapping(value="listProduct")
 	public String listProduct( @ModelAttribute("search") Search search , Model model , HttpServletRequest request, @RequestParam(value="menu", required=false) String menu) throws Exception{

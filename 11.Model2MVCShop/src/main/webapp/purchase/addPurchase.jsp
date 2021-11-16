@@ -96,6 +96,13 @@
 		<hr/>
 		
 		<div class="row">
+	  		<div class="col-xs-4 col-md-2 "><strong>구매수량</strong></div>
+			<div class="col-xs-8 col-md-4">${purchase.orderQty}	</div>
+		</div>
+		
+		<hr/>
+		
+		<div class="row">
 	  		<div class="col-xs-4 col-md-2 "><strong>구매자이름</strong></div>
 			<div class="col-xs-8 col-md-4">${purchase.receiverName}	</div>
 		</div>

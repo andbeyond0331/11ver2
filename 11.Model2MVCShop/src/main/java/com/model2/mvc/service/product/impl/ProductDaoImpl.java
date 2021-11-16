@@ -2,6 +2,7 @@ package com.model2.mvc.service.product.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -55,11 +56,27 @@ public class ProductDaoImpl implements ProductDao {
 
 	}
 	
+	@Override
+	public void updateProduct2(Product product) throws Exception {
+		sqlSession.update("ProductMapper.updateProduct2",product);
+		
+
+	}
+	
 	// 게시판 Page 처리를 위한 전체 Row(totalCount) return
 	@Override
 	public int getTotalCount(Search search) throws Exception {
 		
 		return sqlSession.selectOne("ProductMapper.getTotalCount",search);
+	}
+
+	@Override
+	public List<String> listProductAuto(Search search) {
+		List<String> arr=new ArrayList<String>();
+		arr = sqlSession.selectList("ProductMapper.listProductAuto",search);
+		HashSet<String> hash = new HashSet<String>(arr);
+		List<String> resource = new ArrayList<String>(hash);
+		return resource;
 	}
 
 }

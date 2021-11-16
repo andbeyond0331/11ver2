@@ -9,6 +9,7 @@ public class Product {
 	private String fileName;
 	private String manuDate;
 	private int price;
+	private int prodQty;
 	private String prodDetail;
 	private String prodName;
 	private int prodNo;
@@ -58,6 +59,16 @@ public class Product {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	
+
+	public int getProdQty() {
+		return prodQty;
+	}
+
+	public void setProdQty(int prodQty) {
+		this.prodQty = prodQty;
+	}
+
 
 	public String getProdDetail() {
 		return prodDetail;
@@ -109,10 +120,17 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [fileName=" + fileName + ", manuDate=" + manuDate + ", price=" + price + ", prodDetail="
-				+ prodDetail + ", prodName=" + prodName + ", prodNo=" + prodNo + ", regDate=" + regDate
-				+ ", proTranCode=" + proTranCode + "]";
+		return "Product [fileName=" + fileName + ", manuDate=" + manuDate + ", price=" + price + ", prodQty=" + prodQty
+				+ ", prodDetail=" + prodDetail + ", prodName=" + prodName + ", prodNo=" + prodNo + ", regDate="
+				+ regDate + ", proTranCode=" + proTranCode + ", manuDateString=" + manuDateString + "]";
 	}
+
+//	@Override
+//	public String toString() {
+//		return "Product [fileName=" + fileName + ", manuDate=" + manuDate + ", price=" + price + ", prodDetail="
+//				+ prodDetail + ", prodName=" + prodName + ", prodNo=" + prodNo + ", regDate=" + regDate
+//				+ ", proTranCode=" + proTranCode + "]";
+//	}
 	
 	
 	

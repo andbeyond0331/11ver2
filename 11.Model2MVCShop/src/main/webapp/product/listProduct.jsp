@@ -26,11 +26,53 @@
     <!-- Bootstrap Dropdown Hover JS -->
    <script src="/javascript/bootstrap-dropdownhover.min.js"></script>
    
+   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+   
    
    <!-- jQuery UI toolTip 사용 CSS-->
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <!-- jQuery UI toolTip 사용 JS-->
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
+	<script type="text/javascript">
+  $( function() {
+    
+    $( 'input[name="searchKeyword"]').keyup(function(){
+    	var searchKeyword = $(this).val();
+    	console.log("searchKeyword : " + searchKeyword);
+    	var searchCondition = $('select[name="searchCondition"]').val();
+    	console.log("searchCondition : " + searchCondition);
+    
+    	  $.ajax({
+    		  
+    		  url : "/product/json/listProductAuto/"+searchKeyword+"/"+searchCondition,
+    		  method : "GET",
+    		  headers : {
+    			  "Accept" : "application/json",
+				  "Content-Type" : "application/json"
+    		  },
+    		  dataType:"json",
+    		  success: function(JSONData, status){
+    			  var availableTags = JSONData;
+    			  console.log(JSONData);
+    			  $(function(){
+    				  $('input[name="searchKeyword"]').autocomplete({
+    					  source: availableTags
+    				  });
+    			  });
+    				  
+    		  },
+    	  });
+    });
+    
+    
+    });
+  </script>
+  
+ 
+	
+	
 	
 	<!--  ///////////////////////// CSS ////////////////////////// -->
 	<style>
@@ -41,6 +83,9 @@
     
      <!--  ///////////////////////// JavaScript ////////////////////////// -->
 	<script type="text/javascript">
+	
+	
+		
 	
 	
 	
@@ -199,8 +244,8 @@
 				  
 				  <div class="form-group">
 				    <label class="sr-only" for="searchKeyword">검색어</label>
-				    <input type="text" class="form-control" id="searchKeyword" name="searchKeyword"  placeholder="검색어"
-				    			 value="${! empty search.searchKeyword ? search.searchKeyword : '' }"  >
+				    <input type="text" class="form-control" id="searchKeyword" name="searchKeyword"
+				    			 value="${search.searchKeyword}"  >
 				  </div>
 				  
 				  <button type="button" class="btn btn-default">검색</button>
@@ -244,9 +289,22 @@
 			  <td align="left" data-val="${product.proTranCode }">
 			  	<input type="hidden" id="prodNo" name="prodNo" value="${product.prodNo}"/>
 			  	<c:choose>
-					<c:when test="${!empty product.proTranCode && product.proTranCode eq '002'}">
+					<c:when test="${!empty product.prodQty && product.prodQty != 0}">
 				
-					구매 완료
+					판매 중
+					<%-- <c:choose>
+						<c:when test="${menu eq 'manage'}">
+								<!-- ////////////////// jQuery Event 처리로 변경됨 /////////////////////////
+							<a href="/purchase/updateTranCodeByProd?prodNo=${product.prodNo}&tranCode=${product.proTranCode}" onClick="return confirm('해당 상품 배송을 시작하시겠습니까?')">배송하기
+							</a>
+							//////////////////////-->
+							배송하기
+						</c:when>
+					</c:choose> --%>
+				</c:when>
+					
+				<c:when test="${!empty product.proTranCode && product.proTranCode eq '003'}">배송 중</c:when>
+				<c:when test="${!empty product.prodQty && product.prodQty == 0}">재고 없음
 					<c:choose>
 						<c:when test="${menu eq 'manage'}">
 								<!-- ////////////////// jQuery Event 처리로 변경됨 /////////////////////////
@@ -257,9 +315,6 @@
 						</c:when>
 					</c:choose>
 				</c:when>
-					
-				<c:when test="${!empty product.proTranCode && product.proTranCode eq '003'}">배송 중</c:when>
-				<c:when test="${!empty product.proTranCode && product.proTranCode eq '000'}">재고 없음</c:when>
 				<c:otherwise>판매 중</c:otherwise>
 				</c:choose>
 			  </td>

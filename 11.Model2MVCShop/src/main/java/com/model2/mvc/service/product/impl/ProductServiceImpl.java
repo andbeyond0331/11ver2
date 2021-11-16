@@ -63,5 +63,18 @@ public class ProductServiceImpl implements ProductService {
 		productDao.updateProduct(product);
 
 	}
+	
+	@Override
+	public void updateProduct2(Product product) throws Exception {
+
+		productDao.updateProduct2(product);
+
+	}
+
+	@Override
+	public List<String> listProductAuto(Search search) throws Exception {
+		// TODO Auto-generated method stub
+		return productDao.listProductAuto(search);
+	}
 
 }

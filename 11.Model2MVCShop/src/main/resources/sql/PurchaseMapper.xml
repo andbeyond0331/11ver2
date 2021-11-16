@@ -11,6 +11,7 @@
 		<result property="tranNo" 				column="TRAN_NO" 		jdbcType="NUMERIC"/>
   		<result property="purchaseProd.prodNo" 	column="PROD_NO" 		jdbcType="INTEGER"/>
   		<result property="buyer.userId" 		column="BUYER_ID"		jdbcType="VARCHAR"/>
+  		<result property="orderQty"		column="ORDER_QTY" jdbcType="NUMERIC"/>
   		<result property="paymentOption"		column="PAYMENT_OPTION" jdbcType="CHAR"/>
   		<result property="receiverName" 		column="RECEIVER_NAME" 	jdbcType="VARCHAR"/>
   		<result property="receiverPhone" 		column="RECEIVER_PHONE" jdbcType="VARCHAR"/>
@@ -29,6 +30,7 @@
 					seq_transaction_tran_no.NEXTVAL,
 					#{purchaseProd.prodNo:INTEGER},
 					#{buyer.userId:VARCHAR},
+					#{orderQty:NUMERIC},
 					#{paymentOption:CHAR},
 					#{receiverName:VARCHAR},
 					#{receiverPhone:VARCHAR},
@@ -42,7 +44,7 @@
 	 <!-- SQL : SELECT ONE -->
 	 <select 	id="getPurchase"	parameterType="int"	resultMap="purchaseSelectMap">
 		SELECT 
-		prod_no, buyer_id, payment_option, receiver_name, receiver_phone, demailaddr, dlvy_request, dlvy_date, order_data, tran_status_code, tran_no
+		prod_no, buyer_id, order_qty , payment_option, receiver_name, receiver_phone, demailaddr, dlvy_request, dlvy_date, order_data, tran_status_code, tran_no
 		FROM transaction
 		WHERE tran_no = #{tranNo}
   	</select>

@@ -140,6 +140,13 @@
 		  </div>
 		  
 		  <div class="form-group">
+		    <label for="prodQty" class="col-sm-offset-1 col-sm-3 control-label">상품수량</label>
+		    <div class="col-sm-4">
+		      <input type="text" class="form-control" id="prodQty" name="prodQty" value="${product.prodQty }" placeholder="변경상품수량">
+		    </div>
+		  </div>
+		  
+		  <div class="form-group">
 		    <label for="manuDate" class="col-sm-offset-1 col-sm-3 control-label">제조일자</label>
 		    <div class="col-sm-4">
 		      <input type="text" class="form-control" id="manuDate" name="manuDate" value="${product.manuDate }">

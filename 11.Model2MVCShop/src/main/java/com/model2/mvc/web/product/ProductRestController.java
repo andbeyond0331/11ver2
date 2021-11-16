@@ -1,5 +1,6 @@
 package com.model2.mvc.web.product;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -85,6 +86,21 @@ public class ProductRestController {
 		//Business Logic
 		
 		return productService.getProductList(search);
+	}
+	
+	@RequestMapping(value="json/listProductAuto/{searchKeyword}/{searchCondition}", method=RequestMethod.GET)
+	public List<String> listProductAuto ( @PathVariable("searchKeyword") String searchKeyword,
+			@PathVariable("searchCondition") String searchCondition) throws Exception{
+		
+	System.out.println(searchKeyword);
+	searchKeyword= new String(searchKeyword.getBytes("8859_1"), "UTF-8");
+	System.out.println(searchKeyword);
+	
+	Search search = new Search();
+	search.setSearchCondition(searchCondition);
+	search.setSearchKeyword(searchKeyword);
+	
+	return productService.listProductAuto(search);
 	}
 
 //	@RequestMapping( value="json/login", method=RequestMethod.POST )

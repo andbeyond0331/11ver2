@@ -18,6 +18,8 @@ public class Purchase {
 	private String receiverPhone; // RECEIVER_PHONE
 	private String tranCode; // TRAN_STATUS_CODE
 	private int tranNo; // TRAN_NO
+
+	private int orderQty; // order_qty
 	/////////////
 	//JSON Domain Object Binding 위해 추가된 부분
 	private String divyDateString;
@@ -109,14 +111,33 @@ public class Purchase {
 	public void setDivyDateString(String divyDateString) {
 		this.divyDateString = divyDateString;
 	}
+	
+
+	public int getOrderQty() {
+		return orderQty;
+	}
+
+	public void setOrderQty(int orderQty) {
+		this.orderQty = orderQty;
+	}
 
 	@Override
 	public String toString() {
 		return "Purchase [buyer=" + buyer + ", divyAddr=" + divyAddr + ", divyDate=" + divyDate + ", divyRequest="
 				+ divyRequest + ", orderDate=" + orderDate + ", paymentOption=" + paymentOption + ", purchaseProd="
 				+ purchaseProd + ", receiverName=" + receiverName + ", receiverPhone=" + receiverPhone + ", tranCode="
-				+ tranCode + ", tranNo=" + tranNo + ", divyDateString=" + divyDateString + "]";
+				+ tranCode + ", tranNo=" + tranNo + ", orderQty=" + orderQty + ", divyDateString=" + divyDateString
+				+ "]";
 	}
+
+
+//	@Override
+//	public String toString() {
+//		return "Purchase [buyer=" + buyer + ", divyAddr=" + divyAddr + ", divyDate=" + divyDate + ", divyRequest="
+//				+ divyRequest + ", orderDate=" + orderDate + ", paymentOption=" + paymentOption + ", purchaseProd="
+//				+ purchaseProd + ", receiverName=" + receiverName + ", receiverPhone=" + receiverPhone + ", tranCode="
+//				+ tranCode + ", tranNo=" + tranNo + ", divyDateString=" + divyDateString + "]";
+//	}
 	
 	
 //	@Override

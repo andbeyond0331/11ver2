@@ -1,5 +1,6 @@
 package com.model2.mvc.service.product;
 
+import java.util.List;
 import java.util.Map;
 
 import com.model2.mvc.common.Search;
@@ -23,5 +24,10 @@ public interface ProductService {
 	
 	// 상품 수정
 	public void updateProduct(Product product) throws Exception;
+	
+	// 구매 시 상품 수량 수정
+	public void updateProduct2(Product product) throws Exception;
+
+	public List<String> listProductAuto(Search search) throws Exception;
 	
 }

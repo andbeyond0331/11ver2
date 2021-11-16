@@ -92,6 +92,10 @@ public class PurchaseController {
 		System.out.println("/purchase/addPurchase : POST");
 		//Business Logic
 		User user = (User)session.getAttribute("user");
+		product = productService.findProduct(product.getProdNo());
+		
+		System.out.println("/////orderQty : " + purchase.getOrderQty());
+		System.out.println("/////prodQty : " + product.getProdQty());
 		
 		purchase.setTranCode("002");
 		product.setProTranCode("002");
@@ -100,6 +104,13 @@ public class PurchaseController {
 		purchase.setBuyer(user);
 		
 		purchaseService.addPurchase(purchase);
+		
+		
+		int newNumber = purchase.getPurchaseProd().getProdQty()-purchase.getOrderQty();
+		
+		product.setProdQty(newNumber);
+		
+		productService.updateProduct(product);
 		
 		model.addAttribute("purchase", purchase);
 	

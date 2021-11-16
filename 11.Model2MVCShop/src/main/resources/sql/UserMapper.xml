@@ -56,10 +56,10 @@
 											<if test="searchCondition != null">
 												<where>
 													<if test="searchCondition == 0 and searchKeyword !='' ">
-										 				user_id = #{searchKeyword}
+										 				user_id LIKE '%'||#{searchKeyword}||'%'
 													</if>
 													<if test="searchCondition == 1 and searchKeyword !='' ">
-										 				user_name = #{searchKeyword}
+										 				user_name LIKE '%'||#{searchKeyword}||'%'
 													</if>
 												</where>
 											</if>
@@ -86,13 +86,27 @@
 						<if test="searchCondition != null">
 							<where>
 								<if test="searchCondition == 0 and searchKeyword !='' ">
-						 			user_id = #{searchKeyword}
+						 			user_id LIKE '%'||#{searchKeyword}||'%'
 								</if>
 								<if test="searchCondition == 1 and searchKeyword !='' ">
-						 		user_name = #{searchKeyword}
+						 		user_name LIKE '%'||#{searchKeyword}||'%'
 								</if>
 							</where>
 						</if> ) countTable						
+	 </select>
+	 
+	 <select id="listUserAuto" parameterType="search" resultType="String">
+	 	<if test='searchCondition.equals("0")'>
+	 		SELECT user_id
+	 		FROM users
+	 		WHERE user_id LIKE '%'||#{searchKeyword}||'%'
+	 	</if>
+	 	<if test='searchCondition.equals("1")'>
+	 		SELECT user_name
+	 		FROM users
+	 		WHERE user_name LIKE '%'||#{searchKeyword}||'%'
+	 	</if>
+	 	
 	 </select>
 	 
 </mapper>

@@ -81,6 +81,13 @@
 		<hr/>
 		
 		<div class="row">
+	  		<div class="col-xs-4 col-md-2 "><strong>상품 수량</strong></div>
+			<div class="col-xs-8 col-md-4">${product.prodQty}</div>
+		</div>
+		
+		<hr/>
+		
+		<div class="row">
 	  		<div class="col-xs-4 col-md-2 "><strong>상품이미지</strong></div>
 			<div class="col-xs-8 col-md-4"><img src="/images/uploadFiles/${product.fileName}"></div>
 		</div>

@@ -18,6 +18,9 @@
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	
+	<!-- 아임포트 자바스크립트 - 본인인증 -->
+	<script type="text/javascript" src="https://service.iamport.payment-1.1.4.js"></script>
+	
 	<!--  ///////////////////////// CSS ////////////////////////// -->
 	<style>
        body > div.container{
@@ -151,6 +154,52 @@
 											"scrollbars=no,scrolling=no,menubar=no,resizable=no");
 			});
 		});	
+		
+		////////////////////본인인증////////////////////
+		var IMP = window.IMP; //생략가능
+		IMP.init("{imp73057576}"); 
+		
+		// 본인인증 화면 호출
+		IMP.certification({
+			merchane_uid : "merchane_"+ new Date().getTime() //본인인증과 연관된 가맹점 내부 주문번호가 있다면 넘겨주세요
+			m_redirect_url : "{http://127.0.0.1:8080/user/addUserView.jsp}"
+		}, function(rsp){//callback
+			
+			if(rsp.success){
+				jQuery.ajax({
+					url : "{http://127.0.0.1:8080/user/addUserView.jsp}",
+					type : "POST",
+					headers : {"Content-Type":"application/json"},
+					data:{imp_uid:rsp.imp_uid}
+					
+				});
+			}else {
+				
+				alert("인증에 실패. 에러 내용 : " + rsp.error_msg);
+			}
+			/* 
+			//인증 성공
+			console.log(rsp.imp_uid);
+			console.log(rsp.merchant_uid);
+		$.ajax({
+			type : "POST",
+			url : "/certifications/confirm",
+			dataType : "json",
+			data : {
+				imp_uid : rsp.imp_uid
+				
+			} */
+		}).done(function(rsp){
+			//이후 Business Logic 처리하시면 됩니다.
+		});
+		}else {
+			//인증취소 또는 인증실패
+			var msg = '인증에 실패하였습니다.';
+			msg += '에러내용 : ' +rsp.error_msg;
+			
+			alert(msg);
+		}
+		});
 
 	</script>		
     

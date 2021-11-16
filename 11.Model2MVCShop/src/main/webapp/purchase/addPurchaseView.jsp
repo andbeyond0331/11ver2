@@ -123,6 +123,13 @@ $(function(){
 		    </div>
 		  </div>
 		  
+		   <div class="form-group">
+		    <label for=prodQty" class="col-sm-offset-1 col-sm-3 control-label">구매가능수량</label>
+		    <div class="col-sm-4">
+		      	${purchase.purchaseProd.prodQty}
+		    </div>
+		  </div>
+		  
 		  <div class="form-group">
 		    <label for="manuDate" class="col-sm-offset-1 col-sm-3 control-label">제조일자
 		    <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/></label>
@@ -155,6 +162,13 @@ $(function(){
 				<option value="1" selected="selected">현금구매</option>
 				<option value="2">신용구매</option>
 				</select>
+		    </div>
+		  </div>
+		  
+		   <div class="form-group">
+		    <label for="orderQty" class="col-sm-offset-1 col-sm-3 control-label">구매수량</label>
+		    <div class="col-sm-4">
+		      <input type="text" class="form-control" id="orderQty" name="orderQty">
 		    </div>
 		  </div>
 		  
